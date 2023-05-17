@@ -27,15 +27,12 @@ platform-ldflags-y =
 # Some of these are guessed based on GCC compiler capabilities
 #
 PLATFORM_RISCV_XLEN = 64
-# PLATFORM_RISCV_ABI = lp64
-# PLATFORM_RISCV_ISA = rv64imafdc
-# PLATFORM_RISCV_CODE_MODEL = medany
 
 # Firmware load address configuration. This is mandatory.
 FW_TEXT_START=0x80000000
 
 # Optional parameter for path to external FDT
-FW_FDT_PATH=../uintr-rocket-chip/zcu102/rocketchip.dtb
+FW_FDT_PATH=../uintr-rocket-chip/zcu102/dts/rocketchip.dtb
 
 #
 # Dynamic firmware configuration.
@@ -52,11 +49,11 @@ FW_DYNAMIC=n
 FW_JUMP=y
 # This needs to be 4MB aligned for 32-bit support
 # This needs to be 2MB aligned for 64-bit support
-# ifeq ($(PLATFORM_RISCV_XLEN), 32)
-# FW_JUMP_ADDR=0x80400000
-# else
+ifeq ($(PLATFORM_RISCV_XLEN), 32)
+FW_JUMP_ADDR=0x80400000
+else
 FW_JUMP_ADDR=0x80200000
-# endif
+endif
 # FW_JUMP_FDT_ADDR=0x82200000
 
 #
@@ -64,7 +61,7 @@ FW_JUMP_ADDR=0x80200000
 # Optional parameters are commented out. Uncomment and define these parameters
 # as needed.
 #
-FW_PAYLOAD=y
+FW_PAYLOAD=n
 # This needs to be 4MB aligned for 32-bit support
 # This needs to be 2MB aligned for 64-bit support
 ifeq ($(PLATFORM_RISCV_XLEN), 32)
@@ -74,4 +71,4 @@ FW_PAYLOAD_OFFSET=0x200000
 endif
 # FW_PAYLOAD_ALIGN=0x1000
 # FW_PAYLOAD_PATH="path to next boot stage binary image file"
-FW_PAYLOAD_FDT_ADDR=0x82200000
+# FW_PAYLOAD_FDT_ADDR=0x82200000

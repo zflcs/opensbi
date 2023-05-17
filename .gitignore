@@ -9,3 +9,7 @@ install/
 
 # Development friendly files
 tags
+
+# compile_commands.json
+*.json
+.clangd/

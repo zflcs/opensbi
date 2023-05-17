@@ -27,7 +27,7 @@
 					 CLINT_MSWI_OFFSET)
 #define PLATFORM_ACLINT_MTIMER_ADDR	(PLATFORM_CLINT_ADDR + \
 					 CLINT_MTIMER_OFFSET)
-#define PLATFORM_UART_ADDR		    0x60000000
+#define PLATFORM_UART_ADDR		    0x60001000
 #define PLATFORM_UART_INPUT_FREQ	100000000
 #define PLATFORM_UART_BAUDRATE		115200
 
@@ -79,7 +79,7 @@ static int platform_console_init(void)
 {
 	/* Example if the generic UART8250 driver is used */
 	return uart8250_init(PLATFORM_UART_ADDR, PLATFORM_UART_INPUT_FREQ,
-			     PLATFORM_UART_BAUDRATE, 0, 1);
+			     PLATFORM_UART_BAUDRATE, 2, 1);
 }
 
 /*
@@ -147,7 +147,7 @@ const struct sbi_platform_operations platform_ops = {
 };
 const struct sbi_platform platform = {
 	.opensbi_version	= OPENSBI_VERSION,
-	.platform_version	= SBI_PLATFORM_VERSION(0x0, 0x00),
+	.platform_version	= SBI_PLATFORM_VERSION(0x0, 0x1),
 	.name			    = "rocket-chip-zcu102",
 	.features		    = SBI_PLATFORM_DEFAULT_FEATURES,
 	.hart_count		    = PLATFORM_HART_COUNT,
