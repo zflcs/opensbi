@@ -80,24 +80,30 @@
 #define HSTATUS_GVA			_UL(0x00000040)
 #define HSTATUS_VSBE			_UL(0x00000020)
 
+#define IRQ_U_SOFT			0
 #define IRQ_S_SOFT			1
 #define IRQ_VS_SOFT			2
 #define IRQ_M_SOFT			3
+#define IRQ_U_TIMER			4
 #define IRQ_S_TIMER			5
-#define IRQ_VS_TIMER			6
+#define IRQ_VS_TIMER		6
 #define IRQ_M_TIMER			7
+#define IRQ_U_EXT			8
 #define IRQ_S_EXT			9
 #define IRQ_VS_EXT			10
 #define IRQ_M_EXT			11
 #define IRQ_S_GEXT			12
 #define IRQ_PMU_OVF			13
 
+#define MIP_USIP			(_UL(1) << IRQ_U_SOFT)
 #define MIP_SSIP			(_UL(1) << IRQ_S_SOFT)
 #define MIP_VSSIP			(_UL(1) << IRQ_VS_SOFT)
 #define MIP_MSIP			(_UL(1) << IRQ_M_SOFT)
+#define MIP_UTIP			(_UL(1) << IRQ_U_TIMER)
 #define MIP_STIP			(_UL(1) << IRQ_S_TIMER)
 #define MIP_VSTIP			(_UL(1) << IRQ_VS_TIMER)
 #define MIP_MTIP			(_UL(1) << IRQ_M_TIMER)
+#define MIP_UEIP			(_UL(1) << IRQ_U_EXT)
 #define MIP_SEIP			(_UL(1) << IRQ_S_EXT)
 #define MIP_VSEIP			(_UL(1) << IRQ_VS_EXT)
 #define MIP_MEIP			(_UL(1) << IRQ_M_EXT)

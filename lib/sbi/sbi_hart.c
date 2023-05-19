@@ -199,7 +199,7 @@ static int delegate_traps(struct sbi_scratch *scratch)
 		return 0;
 
 	/* Send M-mode interrupts and most exceptions to S-mode */
-	interrupts = MIP_SSIP | MIP_STIP | MIP_SEIP;
+	interrupts = MIP_SSIP | MIP_STIP | MIP_SEIP | MIP_USIP | MIP_UTIP | MIP_UEIP;
 	interrupts |= sbi_pmu_irq_bit();
 
 	exceptions = (1U << CAUSE_MISALIGNED_FETCH) | (1U << CAUSE_BREAKPOINT) |
@@ -804,6 +804,8 @@ sbi_hart_switch_mode(unsigned long arg0, unsigned long arg1,
 			csr_write(CSR_UIE, 0);
 		}
 	}
+
+	sbi_printf("sbi_hart_switch_mode 0x%lx 0x%lx 0x%lx 0x%lx\n", next_addr, next_mode, arg0, arg1);
 
 	register unsigned long a0 asm("a0") = arg0;
 	register unsigned long a1 asm("a1") = arg1;
