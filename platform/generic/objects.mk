@@ -23,7 +23,8 @@ platform-objs-y += platform_override_modules.o
 
 # Blobs to build
 FW_TEXT_START=0x80000000
-FW_DYNAMIC=y
+FW_DYNAMIC=n
+FW_PAYLOAD=y
 FW_JUMP=y
 ifeq ($(PLATFORM_RISCV_XLEN), 32)
   # This needs to be 4MB aligned for 32-bit system
@@ -41,4 +42,5 @@ else
   # This needs to be 2MB aligned for 64-bit system
   FW_PAYLOAD_OFFSET=0x200000
 endif
+FW_PAYLOAD_PATH=../target/riscv64gc-unknown-none-elf/release/os.bin
 FW_PAYLOAD_FDT_ADDR=$(FW_JUMP_FDT_ADDR)
