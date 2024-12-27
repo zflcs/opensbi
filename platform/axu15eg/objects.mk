@@ -45,7 +45,7 @@ platform-objs-y += platform.o
 FW_TEXT_START=0x80000000
 
 # Optional parameter for path to external FDT
-FW_FDT_PATH=../uintr-rocket-chip/axu15eg/dts/rocketchip.dtb
+# FW_FDT_PATH=../uintr-rocket-chip/axu15eg/dts/rocketchip.dtb
 
 #
 # Dynamic firmware configuration.
@@ -82,6 +82,4 @@ FW_PAYLOAD_OFFSET=0x400000
 else
 FW_PAYLOAD_OFFSET=0x200000
 endif
-# FW_PAYLOAD_PATH=../u-boot/u-boot-nodtb.bin
-FW_PAYLOAD_PATH=../linux/arch/riscv/boot/Image
 FW_PAYLOAD_FDT_ADDR=0x82200000
